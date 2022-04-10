@@ -31,7 +31,7 @@ const Login = () => {
         LocalDataService.setIdAuthor(resData.data.authorid)
         LocalDataService.setAuthentication('ok')
 
-        history.push('/account')
+        history.push('/home')
       } else {
         setMessage(true)
       }
