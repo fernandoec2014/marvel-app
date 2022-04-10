@@ -23,7 +23,7 @@ function Main() {
       }}>
       </Route> */}
 
-      <Route exact path="/account">
+      <Route exact path="/home">
         <Home />
       </Route>
 
