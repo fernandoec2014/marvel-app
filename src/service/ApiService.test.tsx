@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { ApiService } from './ApiService'
 import { mockedResponseAuthSuccess } from './__mocks__/ApiServiceMocks'
 
@@ -13,7 +13,9 @@ describe('Testing api service', () => {
       email: 'user@gmail.com',
       password: 'password'
     })
-    expect(res).toEqual({code: 200})
+    expect(res).toEqual({
+      code: 200,
+    })
   })
 
 })

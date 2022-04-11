@@ -35,7 +35,7 @@ const Form = ({ mode, character, handleCancel }: any) => {
 
   // El modo permite agregar o editar
   const handleClick = () => {
-    if (mode == 'add') {
+    if (mode === 'add') {
       addCharacter()
     } else {
       editCharacter()
