@@ -61,8 +61,7 @@ const Home = () => {
         id: id,
         idAuthor: LocalDataService.getIdAuthor(),
       }
-
-      const res = await ApiService.deleteHero(parameters)
+      await ApiService.deleteHero(parameters)
       getAllHero()
     } catch (error) {
       console.log('Error en ejecución de servicio');
