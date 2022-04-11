@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
-import Styles from "./Home.styles"
+import Styles from './Home.styles'
 
-import Button from "../../atoms/Button/Button"
-import Input from "../../atoms/Input/Input"
-import Card from "../../molecule/Card/Card"
-import Form from "../../molecule/Form/Form";
+import Button from '../../atoms/Button/Button'
+import Input from '../../atoms/Input/Input'
+import Card from '../../molecule/Card/Card'
+import Form from '../../molecule/Form/Form'
 
-import { ApiService } from "../../../service/ApiService"
-import { LocalDataService } from "../../../service/LocalDataService"
+import { ApiService } from '../../../service/ApiService'
+import { LocalDataService } from '../../../service/LocalDataService'
 
 interface ICharacter {
   _id: string
@@ -29,11 +29,15 @@ const Home = () => {
   const [mode, setMode] = useState<any>()
   const [inputSearch, setInputSearch] = useState<string>('')
   const [showForm, setShowForm] = useState<boolean>(false)
-
-  let history = useHistory();
+  const user = LocalDataService.getAuthentication()
+  let history = useHistory()
 
   useEffect(() => {
-    getAllHero()
+    if (user === 'null' || user === '') {
+      history.push('/')
+    } else {
+      getAllHero()
+    }
   }, [])
 
   const getAllHero = async () => {
@@ -93,7 +97,7 @@ const Home = () => {
   }
 
   const handleLogout = () => {
-    LocalDataService.setAuthentication('close')
+    LocalDataService.setAuthentication('')
     LocalDataService.setIdAuthor('')
     let path = '/';
     history.push(path);
@@ -101,12 +105,12 @@ const Home = () => {
 
   return (
     <Styles>
-      <div className="container" style={{ overflowY: 'scroll', height: 'calc(100vh - 1px)' }}>
-        <div className="page-container">
-          <div className="home-container">
+      <div className='container' style={{ overflowY: 'scroll', height: 'calc(100vh - 1px)' }}>
+        <div className='page-container'>
+          <div className='home-container'>
             <div className='search'>
               <div className='search-input'>
-                <h1 className="title-text">Listado de personajes</h1>
+                <h1 className='title-text'>Listado de personajes</h1>
               </div>
 
               <div className='search-button'>

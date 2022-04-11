@@ -4,7 +4,7 @@ const Styles = styled.div`
   .form {
     background: white;
     border: 1px solid var(--soft-grey);
-    padding: 0 32px 12px 32px;
+    padding: 0px 0px 0px 64px;
   }
   .form-rows {
     padding: 6px 0;

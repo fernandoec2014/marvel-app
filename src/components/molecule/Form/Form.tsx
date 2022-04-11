@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Button from '../../atoms/Button/Button';
+import Button from '../../atoms/Button/Button'
 import Input from '../../atoms/Input/Input'
 import Styles from './Form.styles'
 
@@ -163,7 +163,7 @@ const Form = ({ mode, character, handleCancel }: any) => {
         </div>
 
         {
-          (flag && <h6>{message}</h6>)
+          (flag && <h5>{message}</h5>)
         }
 
         <div className='form-button-container'>
