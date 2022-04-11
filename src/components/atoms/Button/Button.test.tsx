@@ -4,7 +4,6 @@ import Button from './Button'
 describe('Button atom', () => {
 
   it('Should be defined', async () => {
-    console.log(Button)
     expect(Button).toBeDefined()
   })
 

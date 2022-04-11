@@ -1,14 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
 export class ApiService {
   static baseURL: string =
-    "https://bp-marvel-api.herokuapp.com/marvel-characters";
-  static baseUrlAuthentication: string = "https://mysql-bp-login.herokuapp.com";
+    'https://bp-marvel-api.herokuapp.com/marvel-characters';
+  static baseUrlAuthentication: string = 'https://mysql-bp-login.herokuapp.com';
 
   /* Consumo del servicio de login */
   static async login(parameters: any) {
     const url = `${this.baseUrlAuthentication}/login`;
-    console.log(url)
     try {
       const body = {
         email: parameters.email,
@@ -17,7 +16,7 @@ export class ApiService {
       const res = await axios.post(url, body);
       return res;
     } catch (error) {
-      throw new Error("No se pudo ejecutar el servicio login.");
+      throw new Error('No se pudo ejecutar el servicio login.');
     }
   }
 
@@ -33,7 +32,7 @@ export class ApiService {
       const res = await axios.post(url, body);
       return res;
     } catch (error) {
-      throw new Error("No se pudo ejecutar el servicio de creación de cuenta.");
+      throw new Error('No se pudo ejecutar el servicio de creación de cuenta.');
     }
   }
 
@@ -44,38 +43,55 @@ export class ApiService {
       const res = await axios.get(url);
       return res.data
     } catch (error) {
-      throw new Error("No se pudo ejecutar el servicio de creación de cuenta.");
+      throw new Error('No se pudo ejecutar el servicio de creación de cuenta.');
     }
   }
 
-  /* Consumo del servicio de add character */
+  /* Consumo del servicio agregar personajes */
   static async addHero(parameters: any) {
-    const url = `${this.baseURL}?idAuthor=${parameters.idAuthor}`;
+    const url = `${this.baseURL}?idAuthor=${parameters.idAuthor}`
     try {
       const body = {
         title: parameters.title,
         body: parameters.body,
         image: parameters.image,
-        category: "main",
+        category: 'main',
       }
 
-      console.log('--->', body)
       const res = await axios.post(url, body);
-      console.log('>>>>>', res);
       return res;
     } catch (error) {
-      throw new Error("No se pudo ejecutar el servicio de creación de cuenta.");
+      throw new Error('No se pudo ejecutar el servicio de creación de cuenta.')
     }
   }
 
-  /* Consumo del servicio para eliminar personajes */
+
+  /* Consumo del servicio editar personajes */
+  static async editHero(parameters: any) {
+    const url = `${this.baseURL}/${parameters.id}?idAuthor=${parameters.idAuthor}`
+    try {
+      const body = {
+        title: parameters.title,
+        body: parameters.body,
+        image: parameters.image,
+        category: 'main',
+      }
+      const res = await axios.put(url, body);
+      return res;
+    } catch (error) {
+      throw new Error('No se pudo ejecutar el servicio de creación de cuenta.')
+    }
+  }
+
+
+  /* Consumo del servicio eliminar personajes */
   static async deleteHero(parameters: any) {
-    const url = `${this.baseURL}/${parameters.id}?idAuthor=${parameters.idAuthor}`;
+    const url = `${this.baseURL}/${parameters.id}?idAuthor=${parameters.idAuthor}`
     try {
       const res = await axios.delete(url);
       return res;
     } catch (error) {
-      throw new Error("No se pudo ejecutar el servicio de creación de cuenta.");
+      throw new Error('No se pudo ejecutar el servicio de creación de cuenta.');
     }
   }
 }
