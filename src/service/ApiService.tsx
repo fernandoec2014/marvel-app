@@ -13,9 +13,7 @@ export class ApiService {
         email: parameters.email,
         password: parameters.password,
       }
-      console.log('------>', body);
       const res = await axios.post(url, body);
-      console.log('------>', res);
       return res;
     } catch (error) {
       throw new Error('No se pudo ejecutar el servicio login.');

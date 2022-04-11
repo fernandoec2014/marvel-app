@@ -20,7 +20,7 @@ const Styles = styled.div`
     background-color: var(--light-white);
     margin: 0px auto;
     max-width: 360px;
-    margin-top: 25%;
+    margin-top: 90px;
     padding: 1px 24px 48px 24px;
   }
   .title-text {    

@@ -17,7 +17,7 @@ const Styles = styled.div`
     max-width: 800px;
   }
   .home-container {
-    background-color: var(--light-white);
+    background-color: var(--soft-grey);
     margin: 0px auto;
     max-width: 800px;
     margin-top: 5%;

@@ -29,11 +29,16 @@ const Home = () => {
   const [mode, setMode] = useState<any>()
   const [inputSearch, setInputSearch] = useState<string>('')
   const [showForm, setShowForm] = useState<boolean>(false)
-
-  let history = useHistory();
+  const user = LocalDataService.getAuthentication()
+  let history = useHistory()
 
   useEffect(() => {
-    getAllHero()
+    if (user === 'null' || user === '') {
+      console.log('Redirecciona');
+      history.push('/')
+    } else {
+      getAllHero()
+    }
   }, [])
 
   const getAllHero = async () => {
@@ -93,7 +98,7 @@ const Home = () => {
   }
 
   const handleLogout = () => {
-    LocalDataService.setAuthentication('close')
+    LocalDataService.setAuthentication('')
     LocalDataService.setIdAuthor('')
     let path = '/';
     history.push(path);

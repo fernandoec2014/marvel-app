@@ -7,9 +7,9 @@ const mockedAxios = axios as jest.Mocked<typeof axios>
 
 describe('Testing api service', () => {
 
-  it('Should work if there are correct parameters',  () => {
+  it('Should work if there are correct parameters',  async() => {
     mockedAxios.get.mockResolvedValueOnce(mockedResponseAuthSuccess)
-    const res = ApiService.login({
+    const res = await ApiService.login({
       email: 'user@gmail.com',
       password: 'password'
     })
