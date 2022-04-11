@@ -12,7 +12,7 @@ describe('ButtonCard atom', () => {
     expect(() => {
       render(
         <ButtonCard
-          onClick={onClick}>Hazme click
+          onClick={onClick}>
         </ButtonCard>)
     }).not.toThrow()
   })
