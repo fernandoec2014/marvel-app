@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import Button from '../../../atoms/Button/Button';
-import Input from '../../../atoms/Input/Input'
+import Button from '../../atoms/Button/Button';
+import Input from '../../atoms/Input/Input'
 import Styles from './Form.styles'
 
-import { ApiService } from '../../../../service/ApiService'
-import { LocalDataService } from '../../../../service/LocalDataService'
+import { ApiService } from '../../../service/ApiService'
+import { LocalDataService } from '../../../service/LocalDataService'
 
 const Form = ({ mode, character, handleCancel }: any) => {
   // Inicializacion de variables
