@@ -7,13 +7,15 @@ export class ApiService {
 
   /* Consumo del servicio de login */
   static async login(parameters: any) {
-    const url = `${this.baseUrlAuthentication}/login`;
+    const url = `${this.baseUrlAuthentication}/login`
     try {
       const body = {
         email: parameters.email,
         password: parameters.password,
       }
+      console.log('------>', body);
       const res = await axios.post(url, body);
+      console.log('------>', res);
       return res;
     } catch (error) {
       throw new Error('No se pudo ejecutar el servicio login.');
