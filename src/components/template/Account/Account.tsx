@@ -1,14 +1,13 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom'
 
-import Button from "../../atoms/Button/Button";
-import Input from "../../atoms/Input/Input";
-import Styles from "./Account.styles"
+import Button from '../../atoms/Button/Button'
+import Input from '../../atoms/Input/Input'
+import Styles from './Account.styles'
 
-import { ApiService } from "../../../service/ApiService"
+import { ApiService } from '../../../service/ApiService'
 import { useState } from 'react';
 
 const Account = () => {
-
   const [emailInput, setEmailInput] = useState<string>('')
   const [passwordInput, setPasswordInput] = useState<string>('')
   const [authorId, setAuthorId] = useState<string>('')
@@ -17,7 +16,6 @@ const Account = () => {
   let history = useHistory();
 
   const handleClick = async () => {
-
     try {
       const parameters = {
         email: emailInput,
@@ -27,7 +25,6 @@ const Account = () => {
 
       const res = await ApiService.account(parameters)
       if (res.data.success) {
-
         setMessage(res.data.message)
         setShowMessage(true)
         setTimeout(() => {
@@ -45,10 +42,10 @@ const Account = () => {
 
   return (
     <Styles>
-      <div className="container">
-        <div className="page-container">
-          <div className="account-container">
-            <h1 className="title-text">Crear cuenta</h1>
+      <div className='container'>
+        <div className='page-container'>
+          <div className='account-container'>
+            <h1 className='title-text'>Crear cuenta</h1>
             <Input
               type='text'
               placeholder='Email'

@@ -1,4 +1,4 @@
-import { MdCreate, MdDeleteOutline } from 'react-icons/md';
+import { MdCreate, MdDeleteOutline } from 'react-icons/md'
 
 import Styles from './ButtonCard.styles'
 

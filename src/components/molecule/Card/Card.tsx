@@ -1,6 +1,6 @@
-import Styles from "./Card.styles"
+import Styles from './Card.styles'
 
-import ButtonCard from "../../atoms/ButtonCard/ButtonCard"
+import ButtonCard from '../../atoms/ButtonCard/ButtonCard'
 
 interface ICard {
   id: string
@@ -16,17 +16,17 @@ const Card: React.FC<ICard> = (
 ) => {
   return (
     <Styles>
-      <div className="card-content">
+      <div className='card-content'>
 
-        <div className="column">
-          <img className="image-marvel" alt={title} src={image} width={180} height={230} />
+        <div className='column'>
+          <img className='image-marvel' alt={title} src={image} width={180} height={230} />
         </div>
-        <div className="column style-text">
+        <div className='column style-text'>
           <p><b>{title}</b></p>
           {description}
         </div>
-        <div className="column">
-          <div className="center-vertical">
+        <div className='column'>
+          <div className='center-vertical'>
             <ButtonCard
               icon={'edit'}
               onClick={handleEdit}

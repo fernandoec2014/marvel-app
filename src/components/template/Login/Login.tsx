@@ -1,41 +1,55 @@
-import { Link, useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
-import Button from '../../atoms/Button/Button';
-import Input from '../../atoms/Input/Input';
+import Button from '../../atoms/Button/Button'
+import Input from '../../atoms/Input/Input'
 import Styles from './Login.styles'
 
 import { ApiService } from '../../../service/ApiService'
-import { useState } from 'react';
 
-import { LocalDataService } from '../../../service/LocalDataService';
+import { LocalDataService } from '../../../service/LocalDataService'
 
 const Login = () => {
 
-  const [message, setMessage] = useState(false)
-  const [emailInput, setEmailInput] = useState('')
-  const [passwordInput, setPasswordInput] = useState('')
+  const [emailInput, setEmailInput] = useState<string>('')
+  const [passwordInput, setPasswordInput] = useState<string>('')
+  const [showMessage, setShowMessage] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('')
   let history = useHistory();
 
+  // Manejo de mensajes
+  useEffect(() => {
+    setShowMessage(false)
+  }, [emailInput, passwordInput])
+
   const handleClick = async () => {
-    try {
-      const parameters = {
-        email: emailInput,
-        password: passwordInput
-      }
+    let emailValue = emailInput.trim()
+    let passwordValue = passwordInput.trim()
 
-      const res = await ApiService.login(parameters)
-      if (res.data.success) {
-        // Almacenamiento en session
-        let resData = res.data
-        LocalDataService.setIdAuthor(resData.data.authorid)
-        LocalDataService.setAuthentication('ok')
+    if (emailValue.length > 0 && passwordValue.length > 0) {
+      try {
+        const parameters = {
+          email: emailInput,
+          password: passwordInput
+        }
 
-        history.push('/home')
-      } else {
-        setMessage(true)
+        const res = await ApiService.login(parameters)
+        if (res.data.success) {
+          // Almacenamiento en session
+          let resData = res.data
+          LocalDataService.setIdAuthor(resData.data.authorid)
+          LocalDataService.setAuthentication('ok')
+          history.push('/home')
+        } else {
+          setShowMessage(true)
+          setMessage('Usuario no autorizado')
+        }
+      } catch (error) {
+        console.log('Error en ejecución de servicio');
       }
-    } catch (error) {
-      console.log('Error en ejecución de servicio');
+    } else {
+      setShowMessage(true)
+      setMessage('Los parámetros ingresados no son válidos')
     }
   }
 
@@ -66,7 +80,7 @@ const Login = () => {
             <br />
 
             {
-              (message && <h6>{'Usuario no autorizado'}</h6>)
+              (showMessage && <h5>{message}</h5>)
             }
 
             <Button
