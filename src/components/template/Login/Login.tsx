@@ -23,8 +23,7 @@ const Login = () => {
         password: passwordInput
       }
 
-      const res = await ApiService.login(parameters)
-      console.log('1>>> ', res.data.success);
+      const res = await ApiService.login(parameters)      
       if (res.data.success) {
         // Almacenamiento en session
         let resData = res.data

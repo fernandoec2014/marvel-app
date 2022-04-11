@@ -40,6 +40,7 @@ const Styles = styled.div`
   }
   .search-button {
     width: 145px;
+    max-width: fit-content;
   }
 `
 export default Styles

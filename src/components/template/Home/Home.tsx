@@ -25,8 +25,11 @@ interface ICharacter {
 
 const Home = () => {
   const [characters, setCharacters] = useState<Array<ICharacter>>()
+  const [character, setCharacter] = useState<any>()
+  const [mode, setMode] = useState<any>()
   const [inputSearch, setInputSearch] = useState<string>('')
   const [showForm, setShowForm] = useState<boolean>(false)
+
   let history = useHistory();
 
   useEffect(() => {
@@ -39,7 +42,6 @@ const Home = () => {
         idAuthor: LocalDataService.getIdAuthor(),
       }
       const res = await ApiService.getAllHero(parameters)
-      console.log(res);
       setCharacters(res)
     } catch (error) {
       console.log('Error en ejecución de servicio');
@@ -47,8 +49,10 @@ const Home = () => {
   }
 
   const handleEdit = (id: string) => {
-    console.log('Edit');
-    console.log('ID', id);
+    const found = characters!.find(character => character._id === id)
+    setMode('edit')
+    setShowForm(true)
+    setCharacter(found)
   }
 
   const handleDelete = async (id: string) => {
@@ -59,7 +63,6 @@ const Home = () => {
       }
 
       const res = await ApiService.deleteHero(parameters)
-      console.log(res)
       getAllHero()
     } catch (error) {
       console.log('Error en ejecución de servicio');
@@ -67,20 +70,19 @@ const Home = () => {
   }
 
   const handleCancel = (flag: boolean) => {
-    console.log('Dio click en cancel');
     setShowForm(flag)
     getAllHero()
   }
 
   const handleAddCharacter = () => {
+    setCharacter('')
+    setMode('add')
     setShowForm(true)
     getAllHero()
   }
 
   const handleSearch = (e: any) => {
     let wordFilter = e
-    console.log(wordFilter);
-    console.log(characters);
     if (wordFilter !== '' && wordFilter.length > 0) {
       let dataFilter = characters!.filter((item) => (
         item.title.toLowerCase().includes(wordFilter.toLowerCase())
@@ -107,14 +109,15 @@ const Home = () => {
               <div className='search-input'>
                 <h1 className="title-text">Listado de personajes</h1>
               </div>
+
               <div className='search-button'>
                 <Button
                   icon={'logout'}
                   text={'Cerrar sesión'}
                   onClick={handleLogout}
                 />
-              </div>
 
+              </div>
               <div className='search-input'>
                 <Input
                   type='text'
@@ -137,7 +140,7 @@ const Home = () => {
               <br />
 
               {
-                showForm && <Form handleCancel={handleCancel} />
+                showForm && <Form mode={mode} character={character} handleCancel={handleCancel} />
               }
 
               {

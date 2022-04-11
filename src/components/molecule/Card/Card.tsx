@@ -3,7 +3,7 @@ import Styles from "./Card.styles"
 import ButtonCard from "../../atoms/ButtonCard/ButtonCard"
 
 interface ICard {
-  id:string
+  id: string
   image?: string
   title?: string
   description?: string

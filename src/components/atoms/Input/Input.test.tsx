@@ -4,7 +4,6 @@ import Input from './Input'
 describe('Input atom', () => {
 
   it('Should be defined', async () => {
-    console.log(Input)
     expect(Input).toBeDefined()
   })
 

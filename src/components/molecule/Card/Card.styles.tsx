@@ -32,10 +32,24 @@ const Styles = styled.div`
 @media (max-width: 500px) {
   .card-content {
     background-color: var(--dark-grey);
-    height:280px &column {
-      width: auto;
-      float: none;
-    }
+    height: 540px;
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+
+  .image-marvel {
+    width: 100px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: none;
+    border: 3px solid var(--light-orange);
+  }
+
+  .card-content {
+    background-color: var(--dark-grey);
+    height: 240px;
+    padding: 6px;
+    margin-bottom: 10px;
   }
 }
 `
