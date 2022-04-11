@@ -23,7 +23,7 @@ const Login = () => {
         password: passwordInput
       }
 
-      const res = await ApiService.login(parameters)      
+      const res = await ApiService.login(parameters)
       if (res.data.success) {
         // Almacenamiento en session
         let resData = res.data

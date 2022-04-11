@@ -7,7 +7,7 @@ import Styles from "./Home.styles"
 import Button from "../../atoms/Button/Button"
 import Input from "../../atoms/Input/Input"
 import Card from "../../molecule/Card/Card"
-import Form from "../../molecule/Card/Form/Form";
+import Form from "../../molecule/Form/Form";
 
 import { ApiService } from "../../../service/ApiService"
 import { LocalDataService } from "../../../service/LocalDataService"
